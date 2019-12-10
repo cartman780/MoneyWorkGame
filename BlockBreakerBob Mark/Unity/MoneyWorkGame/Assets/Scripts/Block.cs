@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Block : MonoBehaviour
+{
+    // Velden in Unity. Hitteller en hits om te slopen
+    [SerializeField] int hitsToDestroy = 1;
+    [SerializeField] int timesHit = 0;
+
+    // Als het blok geraakt is, voert hij deze functie uit
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Telt 1 hit op
+        timesHit++;
+
+        // Als timesHit gelijk is aan hits om te slopen
+        if (hitsToDestroy == timesHit)
+        {
+            // Verwijderd het blok
+            Destroy(gameObject);
+        }
+    }
+}
